@@ -13,7 +13,7 @@ project:
 # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
 
-# Keep a track of the submission yaml  
+# Keep a track of the submission yaml
 yaml_version: 4
 
 # As everyone will have access to all designs, try to make it easy for someone new to your design to know what
@@ -22,22 +22,23 @@ yaml_version: 4
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
   author:       "Nicholas Kuipers"      # Your name
-  title:        "Leaky Integrate-And-Fire Neuron (Verilog Demo)"      # Project title
+  title:        "Leaky Integrate-and-Fire Neuron (Verilog Demo)"      # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Implement a LIF neuron in silicon"      # Short description of what your project does
+  description:  "Implement a LIF neuron in silicon."      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
       Apply an input current injection to the LIF neuron using switches.
 
-      This gets added to a membrane potential which is decayed over time. If the membrane
-      potential exceeds the threshold then trigger a spike.
+      This gets added to a membrane potential which is decayed over time.
+      If the membrane potential exceeds the threshold then trigger a spike.
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test:  |
-      After reset the membrane potential will be set to 0.
+      After reset, the membrane potential will be set to 0.
 
-      Then change the inputs to change the current. A higher current should trigger a higher firing rate.
+      Then change the inputs to change the current. A higher current should
+      trigger a higher firing rate. 
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
@@ -58,7 +59,7 @@ documentation:
     - membrane potential bit e
     - membrane potential bit f
     - membrane potential bit g
-    - dot
+    - membrane potential bit h
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
     - spike bit 0
@@ -73,7 +74,7 @@ documentation:
 # The following fields are optional
   tag:          "neuron, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
   external_hw:  ""      # Describe any external hardware needed
-  discord:      "mattvenn"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  discord:      ""      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
   clock_hz:     10000000       # Clock frequency in Hz (if required)
   picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
