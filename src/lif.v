@@ -20,6 +20,7 @@ module lif (
         end else begin
             state <= next_state;
         end
+    end                            // source of errors here
 
     // next_state logic
     //assign next_state = current + (state * beta)
@@ -27,8 +28,6 @@ module lif (
 
     // spiking logic
     assign spike = (state >= threshold);
-
-    end
 
 endmodule
 
