@@ -1,5 +1,7 @@
 `default_nettype none    // no unintended nets made
 
+// THIS REPLACES DECODER.V
+
 module lif (
     input wire [7:0] current,
     input wire       clk,
