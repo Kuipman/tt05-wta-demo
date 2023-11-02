@@ -16,14 +16,6 @@ module tt_um_lif (
     // oe = output enable
     assign uio_oe = 8'b11111111;
 
-module lif (
-    input wire [7:0] current,
-    input wire       clk,
-    input wire       rst_n,      // resets state into known state
-    output wire      spike,      // doesn't need to be stored
-    output reg [7:0] state       // we ARE storing this value
-);
-
 
     // instantiate lif neuron
     // copy this line as many times as needed to create multiple neurons
