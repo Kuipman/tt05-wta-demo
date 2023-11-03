@@ -22,9 +22,9 @@ module wta (
     assign comparator = (current[7:4] >= current[3:0]);
 
     // if comparator = 1, result[7:4] = current[7:4]
-    assign result[7:4] = (comparator ? current[7:4] : 0)
+    assign result[7:4] = (comparator ? current[7:4] : 0);
 
     // if comparator = 0, result [3:0] = current[3:0]
-    assign result[3:0] = (comparator ? 0 : current[3:0])
+    assign result[3:0] = (comparator ? 0 : current[3:0]);
 
 endmodule
