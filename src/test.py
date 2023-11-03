@@ -37,7 +37,8 @@ async def test_my_design(dut):
     ######### Test 2: Pass initial current value through circuit, check results
     dut._log.info("Test 2: First true circuit check with current 0b11001101")
     await RisingEdge(dut.clk)                # wait for next clock tick -- specifically the rising edge
-    dut._log.info("Value of uo_out = " + dut.uo_out.value)   # DEBUG - prints the current value of uo_out
+    # dut._log.info("Value of uo_out = " + dut.uo_out.value)   # DEBUG - prints the current value of uo_out
+    dut._log.info(dut.uo_out.value)
     assert dut.uo_out.value == 0b00001101    # expected value
     
 
