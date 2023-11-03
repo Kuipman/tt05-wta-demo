@@ -4,7 +4,7 @@ module wta (
     input wire [7:0] current,
     input wire       clk,
     input wire       rst_n,
-    output reg [7:0] uo_out
+    output reg [7:0] u_out
 );
 
     wire comparator;       // comparison of 4 MSBs vs 4 LSBs
@@ -14,7 +14,7 @@ module wta (
         if (!rst_n) begin
             result <= 0;
         end else begin
-            uo_out <= result;
+            u_out <= result;
         end
     end
 
@@ -22,7 +22,7 @@ module wta (
     assign comparator = (current[7:4] >= current[3:0]);
 
     // if comparator = 1, result[7:4] = current[7:4]
-    assign result[7:4] = (comparator ? current [7:4] : 0)
+    assign result[7:4] = (comparator ? current[7:4] : 0)
 
     // if comparator = 0, result [3:0] = current[3:0]
     assign result[3:0] = (comparator ? 0 : current[3:0])

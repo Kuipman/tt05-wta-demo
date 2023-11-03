@@ -17,7 +17,7 @@ module tt_um_wta (
     assign uio_out[6:0] = 6'd0;
 
     // instantiate wta network
-    wta wta1(.current(uio_out), .clk(clk), .rst_n(rst_n), .uo_out(uo_out));
+    wta wta1(.current(uio_out), .clk(clk), .rst_n(rst_n), .u_out(uo_out));
 
     // instantiate lif neuron
     //lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uo_out));
