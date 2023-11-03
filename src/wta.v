@@ -13,6 +13,7 @@ module wta (
     always @(posedge clk) begin
         if (!rst_n) begin
             result <= 0;
+            u_out <= 0;
         end else begin
             u_out <= result;
             result[7:4] <= (comparator ? current[7:4] : 0);
