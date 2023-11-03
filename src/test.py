@@ -39,11 +39,21 @@ async def test_my_design(dut):
     await ClockCycles(dut.clk, 5)            # let input propagate through circuit before checking
     await RisingEdge(dut.clk)                # wait for next clock tick -- specifically the rising edge
     # dut._log.info("Value of uo_out = " + dut.uo_out.value)   # DEBUG - prints the current value of uo_out
-    dut._log.info(dut.uo_out.value)
+    dut._log.info(dut.uo_out.value)          # print out the new result
     assert dut.uo_out.value == 0b00001101    # expected value
+
+    ########## Test 3: Change the current, let three clock cycles run through, verify accurate new result
+    dut._log.info("Test 3: Change current to 0b11100110, verify change in result value after 3 clock cycles")
+    CURRENT = 0b11100110
+    await ClockCycles(dut.clk, 3)
+    await RisingEdge(dut.clk)
+    # print out the result and check (assert) that this is expected
+    dut._log.info(dut.uo_out.value)
+    assert dut.uo_out.value == 0b11100000
     
 
-    ######### Test 3: Test series of run-throughs with set current
+    ######### Final Test: Test series of run-throughs with set current
+    dut._log.info("Final Test: Run through series of cycles with constant current, ensure no crash.")
     for i in range(100):  # run for 100 clock cycles
         await RisingEdge(dut.clk)
         # dut._log.info(dut.uo_out.value)
