@@ -1,0 +1,30 @@
+`default_nettype none
+
+module wta ( 
+    input wire [7:0] current,
+    input wire       clk,
+    input wire       rst_n,
+    output reg [7:0] uo_out
+);
+
+    wire comparator;       // comparison of 4 MSBs vs 4 LSBs
+    reg [7:0] result;
+
+    always @(posedge clk) begin
+        if (!rst_n) begin
+            result <= 0;
+        end else begin
+            uo_out <= result;
+        end
+    end
+
+    // if bits [7:4] are greater than bits [3:0] comparator returns 1, otherwise 0
+    assign comparator = (current[7:4] >= current[3:0]);
+
+    // if comparator = 1, result[7:4] = current[7:4]
+    assign result[7:4] = (comparator ? current [7:4] : 0)
+
+    // if comparator = 0, result [3:0] = current[3:0]
+    assign result[3:0] = (comparator ? 0 : current[3:0])
+
+endmodule
