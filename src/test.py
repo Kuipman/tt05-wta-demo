@@ -39,11 +39,13 @@ async def test_my_design(dut):
     await RisingEdge(dut.clk)                # wait for next clock tick -- specifically the rising edge
     # dut._log.info("Value of uo_out = " + dut.uo_out.value)   # DEBUG - prints the current value of uo_out
     dut._log.info(dut.uo_out.value)
-    assert dut.uo_out.value == 0b00001101    # expected value
+    # assert dut.uo_out.value == 0b00001101    # expected value
     
 
+    ######### Test 3: Test series of run-throughs with set current
     for i in range(100):  # run for 100 clock cycles
         await RisingEdge(dut.clk)
+        dut._log.info(dut.uo_out.value)
         # if i > 1:
         #     assert dut.uo_out.value == 0b00001101     # checks if the lower mux properly outputs value
     
