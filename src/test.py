@@ -30,12 +30,15 @@ async def test_my_design(dut):
 
     ######### Test 1: Did the reset work?
     dut._log.info("Test 1: Check that the reset worked")
-    dut._log.info(dut.uo_out.value)
+    # dut._log.info(dut.uo_out.value)   # DEBUG - prints the current value of uo_out
     assert dut.uo_out.value == 0     # if this fails, the test ends here automatically
     dut._log.info("Test 1 successful!")
 
     ######### Test 2: Pass initial current value through circuit, check results
-    # Let clock run through 
+    await RisingEdge(dut.clk)                # let clock run for one tick
+    dut._log.info("Value of uo_out = " + dut.uo_out.value)   # DEBUG - prints the current value of uo_out
+    assert dut.uo_out.value == 0b00001101    # expected value
+    
 
     for i in range(100):  # run for 100 clock cycles
         await RisingEdge(dut.clk)
