@@ -11,7 +11,7 @@ from cocotb.triggers import RisingEdge, FallingEdge, Timer, ClockCycles
 @cocotb.test()
 async def test_my_design(dut):
     # Current value will be changed over time
-    CURRENT = 0b11001101
+    CURRENT = 205 # 0b11001101 # 205
 
     # Print to terminal that the simulation will begin
     dut._log.info("Start the simulation - WTA")
@@ -40,17 +40,17 @@ async def test_my_design(dut):
     await RisingEdge(dut.clk)                # wait for next clock tick -- specifically the rising edge
     # dut._log.info("Value of uo_out = " + dut.uo_out.value)   # DEBUG - prints the current value of uo_out
     dut._log.info(dut.uo_out.value)          # print out the new result
-    assert dut.uo_out.value == 0b00001101    # expected value
+    assert dut.uo_out.value == 13 #0b00001101    # expected value
 
     ########## Test 3: Change the current, let three clock cycles run through, verify accurate new result
     dut._log.info("Test 3: Change current to 0b11100110, verify change in result value after 3 clock cycles")
-    CURRENT = 0b11100110
+    CURRENT = 230 # 0b11100110
     dut.ui_in.value = CURRENT          # set input to current value
     await ClockCycles(dut.clk, 3)
     await RisingEdge(dut.clk)
     # print out the result and check (assert) that this is expected
     dut._log.info(dut.uo_out.value)
-    assert dut.uo_out.value == 0b11100000
+    assert dut.uo_out.value == 224 #0b11100000
     
 
     ######### Final Test: Test series of run-throughs with set current
