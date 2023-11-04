@@ -45,6 +45,7 @@ async def test_my_design(dut):
     ########## Test 3: Change the current, let three clock cycles run through, verify accurate new result
     dut._log.info("Test 3: Change current to 0b11100110, verify change in result value after 5 clock cycles")
     CURRENT = 0b11100110
+    dut.ui_in.value = CURRENT          # set input to current value
     await ClockCycles(dut.clk, 5)
     await RisingEdge(dut.clk)
     # print out the result and check (assert) that this is expected
