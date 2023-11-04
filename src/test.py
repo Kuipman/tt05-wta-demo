@@ -11,7 +11,7 @@ from cocotb.triggers import RisingEdge, FallingEdge, Timer, ClockCycles
 @cocotb.test()
 async def test_my_design(dut):
     # Current value will be changed over time
-    CURRENT = 205 # 0b11001101 # 205
+    CURRENT = 205 # 0b11001101 # 205  2
 
     # Print to terminal that the simulation will begin
     dut._log.info("Start the simulation - WTA")
