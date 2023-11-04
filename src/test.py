@@ -28,7 +28,11 @@ async def test_my_design(dut):
     dut.ui_in.value = CURRENT          # set input to current value
     dut.ena.value = 1                  # enable design
 
+    # wait 10 clock cycles + run a second reset
     await ClockCycles(dut.clk, 10)     # 10 clock cycles
+    dut.rst_n.value = 0                # reset is active low
+    await ClockCycles(dut.clk, 10)     # 10 clock cycles
+    dut.rst_n.value = 1                # deactivate reset signal
 
 
     ######### Test 1: Did the reset work?
