@@ -28,9 +28,15 @@ async def test_my_design(dut):
     dut.ui_in.value = CURRENT          # set input to current value
     dut.ena.value = 1                  # enable design
 
+    await ClockCycles(dut.clk, 10)     # 10 clock cycles
+
+
     ######### Test 1: Did the reset work?
     dut._log.info("Test 1: Check that the reset worked")
-    dut._log.info(dut.uo_out.value)   # DEBUG - prints the current value of uo_out
+    # for i in range (50):
+    #     dut._log.info(dut.uo_out.value)   # DEBUG - prints the current value of uo_out
+    #     await RisingEdge(dut.clk)
+    dut._log.info(dut.uo_out.value) 
     assert dut.uo_out.value == 0      # if this fails, the test ends here automatically
     dut._log.info("Test 1 successful!")
 
